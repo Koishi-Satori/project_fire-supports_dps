@@ -9,9 +9,9 @@
 
 
 # *upgrade contest*
-*ver3  basic structure and 5 types*
+*ver3  basic structure and 5 types*(location:main branch)
 
-*ver4  add a new type:mk153*
+*ver4  add a new type:mk153*(location:new branch)
 
 
 # *public list:*
