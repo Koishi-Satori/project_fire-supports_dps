@@ -8,6 +8,11 @@
 *So you may have found some unforgivable codes,don't attack me plz.*
 
 
+# *upgrade contest*
+ver3  basic structure and 5 types
+ver4  add a new type:mk153
+
+
 # *public list:*
 *(only to correct some spellig mistakes(why not correct it?I don't clear too.)&wrong-used words)*
 *accuary:accuracy*
