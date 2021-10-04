@@ -9,8 +9,8 @@
 
 
 # *upgrade contest*
-ver3  basic structure and 5 types
-ver4  add a new type:mk153
+*ver3  basic structure and 5 types*\n
+*ver4  add a new type:mk153*
 
 
 # *public list:*
