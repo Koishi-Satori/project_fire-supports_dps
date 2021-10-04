@@ -10,9 +10,14 @@
 
 # *public list:*
 *(only to correct some spellig mistakes(why not correct it?I don't clear too.)&wrong-used words)*
+
 *accuary:accuracy*
+
 *totalExptBreaks:total damage except when the enemies still have force-shield)
+
 *force:the amount of enemies' force-shield(or you can call it power)*
+
 *miss:gives probility that the enemies avoid be hit*
+
 *fill:shotspeed(not real shotspeed)*
 # *If there are more,I will add the list*
