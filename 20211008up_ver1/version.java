@@ -1,25 +1,39 @@
 import java.util.Scanner;
 import java.io.*;
 import java.nio.*;
-/*
 
+/*
+  -------------------------------------------------------------------------------------------------
+||This upgrade simplify the code,but it makes some of the functions are useless(even unneedable)   ||
+||I would appreciate it a lot if you'd like to help me to finish it.                               ||
+||Maybe you have find some bad code(yet still can be run),as a primary java-coder,it's hard for me.||
+||(But if you tell me,I will try to enhance this.)                                                 ||
+||Or you can edit it on Github:)                                                                   ||
+  --------------------------------------link part--------------------------------------------------
+my github home-page:https://github.com/Koishi-Satori/
+my bili home-page:https://space.bilibili.com/281416853/
+Some of the fire-support_cal's data is from https://nga.178.com/read.php?tid=15377235.
+Thanks:shenjack_,ishland_,CX_CX_D_(The Author of the article)
+    For they help me a lot.
  */
 
 public class version {
     public static void main(String[] args) {
+        //dim type text
         String ruaCCS_Covenant = "zh_cn";
         String ruaU_ruby = "en";
+        //use the classes
         Main_operation op = new Main_operation();
         tips ruaaaaa = new tips();
         processDef def = new processDef();
-
+        //show text
         ruaaaaa.SelLanguage();
         Scanner scan = new Scanner(System.in);
         String language = scan.nextLine();
         int language_id = def.language(language);
         ruaaaaa.keyInType_en();
         ruaaaaa.keyInType_zh_cn();
-
+        //key in amount
         String type = scan.nextLine();
         int damage = scan.nextInt();
         int DefenceBreak = scan.nextInt();
@@ -29,14 +43,16 @@ public class version {
         int miss = scan.nextInt();
         int amount = scan.nextInt();
         scan.close();
-
+        //switch(has not totally finsihed(yet it works.rue~)
         switch (language_id){
             case 0:{
+                //read the file
                 int data = 0;
                 String Fallen = ".\\language_pack\\All\\illegal_Language.pack";
                 try{
                     FileReader file = new FileReader(Fallen);
                     while ((data=file.read())!=-1) {
+                        //print on screen
                         System.out.print((char)data);
                     }
                     file.close();
@@ -47,6 +63,7 @@ public class version {
                 break;
             }
             case 1:{
+                //use the class to calculation
                 op.en_main(type,damage,DefenceBreak,accuary,fill,force,miss,amount);
                 break;
             }
@@ -60,6 +77,7 @@ public class version {
 }
 
 class processDef {
+    //dim the texts
     static String type_1 = "bgm71";
     static String type_2 = "2b14";
     static String type_3 = "at4";
@@ -69,7 +87,8 @@ class processDef {
     static String type_7 = "pp93";
     String lan_zh = "zh_cn";
     String lan_en = "en";
-
+    
+    //type defend
     public int def_type(String type) {
         if (type.equals(processDef.type_1)) return 1;
         else if (type.equals(processDef.type_2)) return 2;
@@ -80,15 +99,18 @@ class processDef {
         else if (type.equals(processDef.type_7)) return 7;
         else return 0;
     }
-
+    
+    //turn miss&accuray to miss probility
     public double miss(int accuray,int miss) {
         return ((double)accuray/((double)accuray+8*(double)miss));
     }
-
+    
+    //turn the filling to real shotspeed
     public double shotspeed(int fill) {
         return (Math.floor(1500/Math.ceil((300+(double)fill)/30))/30);
     }
-
+    
+    //not finished  yet
     public void ifIllegal(){
 
     }
@@ -100,6 +122,7 @@ class processDef {
     }
 }
 
+//This class is used to output warns.
 class warns{
     public void TypeError_zh_cn() {
         int data = 0;
@@ -132,6 +155,7 @@ class warns{
     }
 }
 
+//This class is used to output tips
 class tips{
     public void keyInType_zh_cn(){
         int data = 0;
@@ -180,11 +204,13 @@ class tips{
     }
 }
 
+//This class is designed to classify and beautify the code.
 class Main_operation{
     public void en_main(String type,int damage,int DefenceBreak,int accuary,int fill,int force,int miss,int amount){
         processDef def = new processDef();
         warns warn = new warns();
         tips tip = new tips();
+        //declare the class(control the cal)
         calculate method_114 = new calculate();
         double dps = 0;
 
@@ -271,6 +297,7 @@ class Main_operation{
     }
 }
 
+//use the other class to finish the final calculation task.
 class calculate{
     public double bgm71(int damage,int DefenceBreak,int accuary,int fill,int force,int miss,int amount){
         processDef def = new processDef();
@@ -353,7 +380,9 @@ class calculate{
     }
 }
 
+//bgm71 details
 class totalCalculation_bgm71{
+    //calculate times to break the force-shield
     public int[] DefenceBreak(int force,int DefenceBreak,double MissDef) {
         int[] result = new int[2];
         int i = 1;
@@ -377,6 +406,7 @@ class totalCalculation_bgm71{
         return result;
     }
 
+    //use data to cal the final dps
     public double AttackDamage_afterBreak(int damage,int DefenceBreak,double MissDef,int amount,int Times_onBreak) {
         double totalEcptBreak = 0;
         for (int i = 1;i<=5000;i++) {
@@ -393,7 +423,9 @@ class totalCalculation_bgm71{
 
 }
 
+//2b14 details
 class totalCalculation_2b14{
+    //calculate times to break the force-shield
     public int[] DefenceBreak(int force,int DefenceBreak,double MissDef) {
         int[] result = new int[2];
         int i = 1;
@@ -409,6 +441,7 @@ class totalCalculation_2b14{
         return result;
     }
 
+    //use data to cal the final dps
     public double AttackDamage_afterBreak(int damage,int DefenceBreak,double MissDef,int amount,int Times_onBreak,double shotspeed) {
         double totalEcptBreak = 0;
         int timesSkill_2 = 0;
@@ -427,6 +460,7 @@ class totalCalculation_2b14{
 }
 
 class totalCalculation_at4{
+    //calculate times to break the force-shield
     public int[] DefenceBreak(int force,int DefenceBreak,double MissDef) {
         int[] result = new int[2];
         int i = 1;
@@ -442,6 +476,7 @@ class totalCalculation_at4{
         return result;
     }
 
+    //use data to cal the final dps
     public double AttackDamage_afterBreak(int damage,int DefenceBreak,double MissDef,int Times_onBreak,int amount,double shotspeed) {
         double totalEcptBreak = 0;
         int timesBurn = 0;
@@ -458,6 +493,7 @@ class totalCalculation_at4{
 }
 
 class totalCalculation_ags30{
+    //calculate times to break the force-shield
     public int[] DefenceBreak(int force,int DefenceBreak,double MissDef,double shotspeed) {
         int[] result = new int[2];
         int i = 1;
@@ -479,6 +515,7 @@ class totalCalculation_ags30{
         return result;
     }
 
+    //use data to cal the final dps
     public double AttackDamage_afterBreak(int damage,int DefenceBreak,double MissDef,int Times_onBreak,int amount,double shotspeed) {
         double totalEcptBreak = 0;
         for (int i = 1;i<=1250;i++) {
@@ -503,11 +540,13 @@ class totalCalculation_ags30{
 }
 
 class totalCalculation_m2{
+    //its skill is a bit of complex.
     public int def_force_E(int force) {
         if (force>0) return 1;
         else return 0;
     }
 
+    //calculate times to break the force-shield
     public int[] DefenceBreak(int force,int DefenceBreak,int accuary,int miss){
         int[] result = new int[2];
         int i = 1;
@@ -530,6 +569,7 @@ class totalCalculation_m2{
         return result;
     }
 
+    //use data to cal the final dps
     public double AttackDamage_afterBreak(int damage,int DefenceBreak,double accuary,int Times_onBreak,int amount,int def_force_E,int miss) {
         double totalEcptBreak = 0;
         double MissDef,damage_skill,tmp_accuary;
@@ -566,7 +606,10 @@ class totalCalculation_m2{
     }
 }
 
+//The most annoy part.F**k you,mica team.
+//The skill of mk153 is too complex.
 class totalCalculation_mk153{
+    //calculate times to break the force-shield
     public int[] DefenceBreak(int force,int DefenceBreak,int miss,int accuary,int damage,int amount) {
         int[] result = new int[5];
         int i = 1;
@@ -616,6 +659,7 @@ class totalCalculation_mk153{
         return result;
     }
 
+    //use data to cal the final dps
     public double AttackDamage_afterBreak(int damage,int accuary,int miss,double shotspeed,int amount,int Times_onBreak,int DefenceBreak,int extraDamage,int hit_tryShot) {
         double totalEcptBreak = 0;
         double curMiss = (double)miss;
